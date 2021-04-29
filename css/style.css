@@ -31,6 +31,46 @@ body {
          url(../img/hero.jpg);
     background-size: cover; /* Background image will cover size of box */
     background-position: top; /* Will always keep background image top in screen view; This will never get cropped out; Bottom/right/left could get cropped out based on resizing of screen */
+    position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* This is the shape in the header section; Each two numbers in parenthesis before each comma represent the x and y coordinate; The measurements start from top left corner to top right corner to bottom right corner to then bottom left corner; 100% is the x coordinate that goes horizontally so the top right corner needs the x to go 100% over to the right side and the y coordinate which is the vertical axis would be 0 since we want it to stay at the top */
-    /* clip-path: polygon(50% 0, 100% 100%, 0 100%) /* Example triangle clip-path; Starting at top you only need one point so you need the 50% because you need it to move over 50% on horizontal x-axis and 0 for y-axis because you need it to stay at top. Then the right corner goes next at 100% since you need it all the way to right and 100% for vertical y-axis as you need it to go to the bottom. The left corner x-axis stays at 0 because you don't want that to move but the y-vertical axis should go down 100% */
+    /* clip-path: polygon(50% 0, 100% 100%, 0 100%) /* Example triangle clip-path; Starting at top you only need one point so you need the 50% because you need it to move over 50% on horizontal x-axis and 0 for y-axis because you need it to stay at top. Then the right corner goes next at 100% since you need it all the way to right and 100% for vertical y-axis as you need it to go to the bottom. The left corner x-axis stays at 0 because you don't want that to move but the y-vertical axis should go down 100% */   
 } 
+
+.logo-box {
+position: absolute;
+top: 40px;
+left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute; /* Will position according to its nearest parent that is positioned relative */
+    top: 40%; /* brings text-box down 50% */
+    left: 50%; /* brings text-box left 50% */
+    background-color: red;
+    transform: translate(-50%, -50%); /* Problem with top 50% and left 50% above is it puts everything at the start of the screen at those measurements WITHOUT taking into account the length of the text-box and the height of the text-box. Transform: translate is the property to use to fix this and takes 2 arguments the first being the width and the second being the height. */
+  }
+
+
+.heading-primary {
+color: #fff;
+text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 17.4px;
+}
+
