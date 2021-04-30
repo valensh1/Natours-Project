@@ -69,6 +69,7 @@ body {
     animation-name: moveInLeft; /* Can specify each animation property separately or do it on one line like in .heading-primary-sub below */
     animation-duration: 1s;
     animation-timing-function: ease-out;
+    padding-left: 35px;
 }
 
 .heading-primary-sub {
@@ -77,7 +78,7 @@ body {
     font-weight: 400;
     letter-spacing: 17.4px;
     animation: moveInRight 1s ease-out; /* All animation properties specified in one line instead of listing out each one separately on to its own line like .heading-primary-main above. These properties could be listed out in any order. Order does not matter here. */
-   
+    padding-left: 17.4px;
 }
 
 @keyframes moveInLeft {
@@ -112,6 +113,18 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0; /* Beginning of animation we want the property to be invisible */
+        transform: translateY(30px); /* y axis goes from top to bottom so a positive number makes it go further down from its normal position. So because we put this further down from its normal position when the animation gets beyond the 0% state and at 100% we have it at transform:translate(0) which is its normal position which is higher so as a result the button will move up because it starts lower than its normal position and moves up to finish at its normal position. */
+    }
+
+    100% {
+        opacity: 1; /* End of animation we want the property to be invisible */
+        transform: translate(0); /* 0 will end animation at its final ending spot which is equivalent to where it would show on page if there was no animation on page. */
+    }
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -120,6 +133,7 @@ body {
     display: inline-block; /* Need to go to parent div container with class .text-box and place text-align : center to center this */
     border-radius: 100px;
     transition: all .2s; /* must be on initial state which is the .btn:link and the .btn:visited */
+    position: relative; /* Added this relative positioning so that the .btn::after could be positioned absolute. */
 }
 
 .btn:hover {
@@ -130,11 +144,37 @@ body {
 .btn:active { /* .btn:active is the pseudo class representing a button click */
     transform: translateY(-1px); /* This is -1px up from the original position of the button NOT from the hover. Since Y axis moves top to bottom a positive # moves it down and a negative # moves it up. We want button to move up when clicked so that's why we have negative # entered here. */
     box-shadow: 0 5px 10px rgba(0,0,0,.2); /* 0 is for shadow on x-axis left to right and 2nd value which is 10px is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
-    z
 }
 
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+.btn::after {  /* Should match most of the properties from .btn:link and .btn:visited above as we want this to hide behind button and only be visible after we hover */
+    content: ""; /* This is for putting content like text after something. In our case we don't want to put any text we just want this blank */
+    display: inline-block; /* Need to keep same as .btn:link and .btn:visted above */
+    height: 100%; /* Want it to be 100% of the height of .btn:link and .btn:visted above so it hides behind */
+    width: 100%; /* Want it to be 100% of the height of .btn:link and .btn:visted above so it hides behind */
+    border-radius: 100px; /* Need to keep same as .btn:link and .btn:visted above */
+    position: absolute;  /* Because .btn:link and .btn:visted above is positioned relative we can position this absolute */
+    top: 0; 
+    left: 0;
+    z-index: -1; /* Use -1 to hide behind */
+    transition: all .4s; /* All animations with .btn::after will perform in .4s */
+}
+
+.btn-white::after {
+    background-color: #fff
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s; /* .5s is duration ease-out is style of animation and .75s is the delay */
+    animation-fill-mode: backwards; /* This sets the animation to the first values in the keyframe and retain these values through the delay process (in this case .75s); moveInBottom @keyframe at 0% has an opacity of 0% so it is invisible. If we remove this line of code from our CSS the button is visible before the animation but including this line of code makes our button invisible = @keyframe rate of moveInBottom of 0% */
 }
 
