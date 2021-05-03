@@ -77,4 +77,4 @@
         box-shadow: 0 1rem 2rem rgba($color-black, .15); /* 0 is for shadow on x-axis left to right and 2nd value which is 10px converted to rem which is 1 rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
         transform: translateY(0);
     }
-}
+};
