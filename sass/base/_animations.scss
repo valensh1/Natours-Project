@@ -1,0 +1,43 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0; /* Beginning of animation we want the property to be invisible */
+        transform: translateX(-10rem); /* x axis goes from left to right so a positive number makes it go further right but we want this to come in from left and go right so we put it as a negative number because we want it to start out 100px to the left from its normal starting position */
+    }
+
+    80% {
+        transform: translateX(1rem); /* At 80% of animation we want the text to go further right than its normal position by 10px */
+    }
+
+    100% {
+        opacity: 1; /* End of animation we want the property to be invisible */
+        transform: translate(0); /* 0 will end animation at its final ending spot which is equivalent to where it would show on page if there was no animation on page. */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0; /* Beginning of animation we want the property to be invisible */
+        transform: translateX(10rem); /* x axis goes from left to right so a positive number makes it go further right from its normal starting position */
+    }
+
+    80% {
+        transform: translateX(-1rem); /* At 80% of animation we want the text to go further left than its normal position by 10px */
+    }
+
+    100% {
+        opacity: 1; /* End of animation we want the property to be invisible */
+        transform: translate(0); /* 0 will end animation at its final ending spot which is equivalent to where it would show on page if there was no animation on page. */
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0; /* Beginning of animation we want the property to be invisible */
+        transform: translateY(3rem); /* y axis goes from top to bottom so a positive number makes it go further down from its normal position. So because we put this further down from its normal position when the animation gets beyond the 0% state and at 100% we have it at transform:translate(0) which is its normal position which is higher so as a result the button will move up because it starts lower than its normal position and moves up to finish at its normal position. */
+    }
+
+    100% {
+        opacity: 1; /* End of animation we want the property to be invisible */
+        transform: translate(0); /* 0 will end animation at its final ending spot which is equivalent to where it would show on page if there was no animation on page. */
+    }
+}

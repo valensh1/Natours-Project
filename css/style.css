@@ -1,94 +1,3 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-*,
-*::after,
-*::before {
-  /*    * - Is the universal selector that selects everything  */
-  margin: 0;
-  /* Eliminates browser default margins as we want to start clean */
-  padding: 0;
-  /* Eliminates browser default padding as we want to start clean */
-  font-size: 62.5%;
-  /* Wanted to use everything by 10px. All the rem's below are based off of 10px. In order to get everything based on 10px we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */
-  box-sizing: inherit;
-  /* This forces all elements on page to inherit properties from their parent when it comes to box-sizing. */ }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem;
-  box-sizing: border-box;
-  /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */ }
-
-.header {
-  height: 95vh;
-  /* 95% of the view height on the screen */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  /* Background image will cover size of box */
-  background-position: top;
-  /* Will always keep background image top in screen view; This will never get cropped out; Bottom/right/left could get cropped out based on resizing of screen */
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* This is the shape in the header section; Each two numbers in parenthesis before each comma represent the x and y coordinate; The measurements start from top left corner to top right corner to bottom right corner to then bottom left corner; 100% is the x coordinate that goes horizontally so the top right corner needs the x to go 100% over to the right side and the y coordinate which is the vertical axis would be 0 since we want it to stay at the top */
-  /* clip-path: polygon(50% 0, 100% 100%, 0 100%) /* Example triangle clip-path; Starting at top you only need one point so you need the 50% because you need it to move over 50% on horizontal x-axis and 0 for y-axis because you need it to stay at top. Then the right corner goes next at 100% since you need it all the way to right and 100% for vertical y-axis as you need it to go to the bottom. The left corner x-axis stays at 0 because you don't want that to move but the y-vertical axis should go down 100% */ }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  /* Will position according to its nearest parent that is positioned relative */
-  top: 40%;
-  /* Brings text-box down 50% */
-  left: 50%;
-  /* Brings text-box left 50% */
-  transform: translate(-50%, -50%);
-  /* Problem with top 50% and left 50% above is it puts everything at the start of the screen at those measurements WITHOUT taking into account the length of the text-box and the height of the text-box. Transform: translate is the property to use to fix this and takes 2 arguments the first being the width and the second being the height. */
-  text-align: center;
-  /* This is used to center the .btn class Discover Our Tours which is displayed as an inline-block within this div container with a class of .text-box */ }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* This fixes any unknown shakiness in animation */
-  margin-bottom: 6rem; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 700;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  /* Can specify each animation property separately or do it on one line like in .heading-primary-sub below */
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  padding-left: 3.5rem; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out;
-  /* All animation properties specified in one line instead of listing out each one separately on to its own line like .heading-primary-main above. These properties could be listed out in any order. Order does not matter here. */
-  padding-left: 1.75rem; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -131,8 +40,95 @@ body {
     transform: translate(0);
     /* 0 will end animation at its final ending spot which is equivalent to where it would show on page if there was no animation on page. */ } }
 
-.btn:link,
-.btn:visited {
+*,
+*::after,
+*::before {
+  /*    * - Is the universal selector that selects everything  */
+  margin: 0;
+  /* Eliminates browser default margins as we want to start clean */
+  padding: 0;
+  /* Eliminates browser default padding as we want to start clean */
+  box-sizing: inherit;
+  /* This forces all elements on page to inherit properties from their parent when it comes to box-sizing. */ }
+
+html {
+  font-size: 62.5%;
+  /* All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */ }
+
+body {
+  box-sizing: border-box;
+  /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */ }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /* This fixes any unknown shakiness in animation */
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    /* Can specify each animation property separately or do it on one line like in .heading-primary-sub below */
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    padding-left: 3.5rem; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+    /* All animation properties specified in one line instead of listing out each one separately on to its own line like .heading-primary-main above. These properties could be listed out in any order. Order does not matter here. */
+    padding-left: 1.75rem; }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skew(15deg, 2deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -150,7 +146,10 @@ body {
   transform: translateY(-3px);
   /* Y axis goes from top to bottom so a positive number would move it down. We want to move the button up upon hover so you input a negative #. This will move it based upon its original position */
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-  /* 0 is for shadow on x-axis left to right and 2nd value which is 10px is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */ }
+  /* 0 is for shadow on x-axis left to right and 2nd value which is 10px converted to rem which is 1 rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */ }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
 
 .btn:active {
   /* .btn:active is the pseudo class representing a button click */
@@ -162,6 +161,8 @@ body {
 .btn--white {
   background-color: #fff;
   color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
 
 .btn::after {
   /* Should match most of the properties from .btn:link and .btn:visited above as we want this to hide behind button and only be visible after we hover */
@@ -184,15 +185,93 @@ body {
   transition: all .4s;
   /* All animations with .btn::after will perform in .4s */ }
 
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
 .btn--animated {
   animation: moveInBottom .5s ease-out .75s;
   /* .5s is duration ease-out is style of animation and .75s is the delay */
   animation-fill-mode: backwards;
   /* This sets the animation to the first values in the keyframe and retain these values through the delay process (in this case .75s); moveInBottom @keyframe at 0% has an opacity of 0% so it is invisible. If we remove this line of code from our CSS the button is visible before the animation but including this line of code makes our button invisible = @keyframe rate of moveInBottom of 0% */ }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  /* Our green color */
+  display: inline-block;
+  /* Making inline block so we can use box model properties on it such as margin, padding, etc. */
+  text-decoration: none;
+  border-bottom: 0.1rem solid #55c57a;
+  padding: .3rem; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  /* 0 is for shadow on x-axis left to right and 2nd value which is 10px converted to rem which is 1 rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+  transform: translateY(-0.2rem); }
+
+.btn-text:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  /* 0 is for shadow on x-axis left to right and 2nd value which is 10px converted to rem which is 1 rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+  transform: translateY(0); }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+  /* Method to center block elements inside another block element */
+  /* This mixin is used when using floats because when using floats it gives a height of 0 and no further styling can be done such as background-color etc. This mixin fixes this to give it height again. */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem)  / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.header {
+  height: 95vh;
+  /* 95% of the view height on the screen */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /* Background image will cover size of box */
+  background-position: top;
+  /* Will always keep background image top in screen view; This will never get cropped out; Bottom/right/left could get cropped out based on resizing of screen */
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* This is the shape in the header section; Each two numbers in parenthesis before each comma represent the x and y coordinate; The measurements start from top left corner to top right corner to bottom right corner to then bottom left corner; 100% is the x coordinate that goes horizontally so the top right corner needs the x to go 100% over to the right side and the y coordinate which is the vertical axis would be 0 since we want it to stay at the top */
+  /* clip-path: polygon(50% 0, 100% 100%, 0 100%) /* Example triangle clip-path; Starting at top you only need one point so you need the 50% because you need it to move over 50% on horizontal x-axis and 0 for y-axis because you need it to stay at top. Then the right corner goes next at 100% since you need it all the way to right and 100% for vertical y-axis as you need it to go to the bottom. The left corner x-axis stays at 0 because you don't want that to move but the y-vertical axis should go down 100% */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header___logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    /* Will position according to its nearest parent that is positioned relative */
+    top: 40%;
+    /* Brings text-box down 40% */
+    left: 50%;
+    /* Brings text-box left 50% */
+    transform: translate(-50%, -50%);
+    /* Problem with top 50% and left 50% above is it puts everything at the start of the screen at those measurements WITHOUT taking into account the length of the text-box and the height of the text-box. Transform: translate is the property to use to fix this and takes 2 arguments the first being the width and the second being the height. */
+    text-align: center;
+    /* This is used to center the .btn class Discover Our Tours which is displayed as an inline-block within this div container with a class of .text-box */ }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }

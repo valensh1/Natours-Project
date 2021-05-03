@@ -1,0 +1,16 @@
+*,
+*::after,
+*::before { /*    * - Is the universal selector that selects everything  */
+    margin: 0; /* Eliminates browser default margins as we want to start clean */
+    padding: 0; /* Eliminates browser default padding as we want to start clean */
+    box-sizing: inherit; /* This forces all elements on page to inherit properties from their parent when it comes to box-sizing. */
+}
+
+html {
+    font-size: 62.5%; /* All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */
+}
+
+
+body {
+    box-sizing: border-box; /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */
+}

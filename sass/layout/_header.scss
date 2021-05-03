@@ -1,0 +1,32 @@
+.header {
+    height: 95vh; /* 95% of the view height on the screen */
+    background-image: linear-gradient(
+        to right bottom,  /* gradient runs from right to bottom */
+        rgba($color-primary-light, 0.8), /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+        rgba($color-primary-dark, 0.8)), /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+         url(../img/hero.jpg);
+    background-size: cover; /* Background image will cover size of box */
+    background-position: top; /* Will always keep background image top in screen view; This will never get cropped out; Bottom/right/left could get cropped out based on resizing of screen */
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* This is the shape in the header section; Each two numbers in parenthesis before each comma represent the x and y coordinate; The measurements start from top left corner to top right corner to bottom right corner to then bottom left corner; 100% is the x coordinate that goes horizontally so the top right corner needs the x to go 100% over to the right side and the y coordinate which is the vertical axis would be 0 since we want it to stay at the top */
+    /* clip-path: polygon(50% 0, 100% 100%, 0 100%) /* Example triangle clip-path; Starting at top you only need one point so you need the 50% because you need it to move over 50% on horizontal x-axis and 0 for y-axis because you need it to stay at top. Then the right corner goes next at 100% since you need it all the way to right and 100% for vertical y-axis as you need it to go to the bottom. The left corner x-axis stays at 0 because you don't want that to move but the y-vertical axis should go down 100% */   
+    
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &___logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute; /* Will position according to its nearest parent that is positioned relative */
+        top: 40%; /* Brings text-box down 40% */
+        left: 50%; /* Brings text-box left 50% */
+        transform: translate(-50%, -50%); /* Problem with top 50% and left 50% above is it puts everything at the start of the screen at those measurements WITHOUT taking into account the length of the text-box and the height of the text-box. Transform: translate is the property to use to fix this and takes 2 arguments the first being the width and the second being the height. */
+        text-align: center; /* This is used to center the .btn class Discover Our Tours which is displayed as an inline-block within this div container with a class of .text-box */
+    }
+} 
+

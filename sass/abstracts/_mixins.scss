@@ -1,0 +1,7 @@
+@mixin clearfix {  /* This mixin is used when using floats because when using floats it gives a height of 0 and no further styling can be done such as background-color etc. This mixin fixes this to give it height again. */
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
