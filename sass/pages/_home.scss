@@ -26,3 +26,8 @@
     margin-top: -10rem; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
 }
 
+.section-stories {
+    padding: 15rem 0;
+    background-color: $color-grey-light-1;
+}
+

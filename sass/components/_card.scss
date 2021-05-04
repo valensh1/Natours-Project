@@ -5,7 +5,7 @@
     position: relative;
     height: 52rem; // This is needed because when you use position:absolute with a child like below the parent loses its height. So we need this to set the height = to the child of &__side
 
-    &__side {  // Class for the backside of our card
+    &__side {  // Classes for the sides of our card
         height: 52rem;
         transition: all .8s ease; // Sets the duration of the animation of rotating the cards to .8s; If did not have ease animation specified it goes with most simple one which is linear
         position: absolute; // Need to position cards so that back can sit on bottom of front

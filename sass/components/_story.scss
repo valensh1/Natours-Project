@@ -1,0 +1,58 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: $color-white;
+    border-radius: .3rem;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); /* This property defines a shape for which adjacent inline content like text should wrap or flow around the circle. In order for this property to work it MUST be floated and have heigth and width properties. This means 50% of the rem which is 15 * 50% which is 7.5rem and then 50% of the x-axis and then 50% of the y-axis */
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); /* This actually creates the circle; The first 50% adjusts the circle size. The bigger the % the bigger the circle */
+        transform: translate(-3rem) skewX(12deg); /* Best way to create some padding with a floated shape is to transform and translate as opposed to using padding or margin properties. Have to have the offset skew for all the properties inside the shape here as well as in line of code below &__text */
+        position: relative; /* Need to position here so we can get the image caption to be centered */
+    }
+
+    &__img {
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4); /* Moves picture and makes it more centered. The gal in the boat was too far off to right */
+        backface-visibility: hidden; /* Not sure this is needed here. Didn't see to do anything */
+        transition: all .5s;
+    }
+
+    &__text {
+        transform: skewX(12deg); /* This is the offset to the slanted shape skew so that text etc. isn't slanted as well and that they remain completely horizontal. This also needs to be added in &__shape transform property above. */
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%); /* This offsets text to help center text based on how long text is. The first number is the x axis and the second is the y axis. The y axis would normally be -50% but we are putting it at 20% because we want to move this down the picture because when we hover over it needs to start lower and come up. */
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0; /* Need to make this invisible until we hover over it */
+        transition: all .5s;
+        backface-visibility: hidden; /* Helps eliminate shaking with caption when it comes up */
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%); /* This is position we want after hover. The above transform would have had an intitial -50% if we didn't have it move downwards 20% */
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1); /* Moves picture and makes it more centered. The gal in the boat was too far off to right */
+        filter: blur(.3rem) brightness(80%); /* blurs picture when hovering and then adjusts brightness. Values below 100% makes it darker and above 100% makes it lighter. */
+    }
+}
