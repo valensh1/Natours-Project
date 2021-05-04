@@ -19,3 +19,10 @@
             transform: skewY(7deg); // This basically puts our features boxes back straight; Otherwise they are slanted with our background image and we don't want that; Notice we do the opposite skew of above which was -7deg. We do positive 7deg here to offset.
          }
 }
+
+.section-tours {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 50rem 0;
+    margin-top: -10rem; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
+}
+
