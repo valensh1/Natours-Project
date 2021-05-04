@@ -1,0 +1,38 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4); /* 0 is for shadow on x-axis left to right and 2nd value which is 15px converted to 1.5rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px or rem the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+        border-radius: .2rem;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s; /* Not sure this is really needed */
+        outline-offset: 2rem; /* This allows spacing between outline which acts like a border and the image; It goes with line of code below &:hover --> outline: 1.5rem solid $color-primary; */
+
+        &--p1 { /* Organization of pics - right top most photo */
+            left: 0;
+            top: -2rem;
+        }
+
+        &--p2 { /* Organization of pics - right nost phoo */
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 { /* Organization of pics - left most photo centered */
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary; /* Acts just like a border but border property doesn't allow you to easily put space in between border and image like outline does; To get space between image and outline go to &__photo above and insert outline-offset with the measurement */
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5); /* 0 is for shadow on x-axis left to right and 2nd value which is 15px converted to 1.5rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px or rem the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+            z-index: 20;
+        }
+    }
+        &:hover &__photo:not(:hover) {  /* This is making the pictures not hovered over a bit smaller; This is the selector composition:hover composition__photo:not(:hover) */
+            transform: scale(.95)
+        }
+}

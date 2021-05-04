@@ -213,6 +213,63 @@ body {
   /* 0 is for shadow on x-axis left to right and 2nd value which is 10px converted to rem which is 1 rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
   transform: translateY(0); }
 
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    /* 0 is for shadow on x-axis left to right and 2nd value which is 15px converted to 1.5rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px or rem the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+    border-radius: .2rem;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    /* Not sure this is really needed */
+    outline-offset: 2rem;
+    /* This allows spacing between outline which acts like a border and the image; It goes with line of code below &:hover --> outline: 1.5rem solid $color-primary; */ }
+    .composition__photo--p1 {
+      /* Organization of pics - right top most photo */
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      /* Organization of pics - right nost phoo */
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      /* Organization of pics - left most photo centered */
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      /* Acts just like a border but border property doesn't allow you to easily put space in between border and image like outline does; To get space between image and outline go to &__photo above and insert outline-offset with the measurement */
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      /* 0 is for shadow on x-axis left to right and 2nd value which is 15px converted to 1.5rem is the y-axis and is the vertical shadow. The 3rd value is the blurriness. The higher the px or rem the more blurry it is. RGBA is color and last value in rgba is the opacity or how visible an item is. The cloer to 1 the more visible it is and the closer to 0 the less visible it is */
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    /* This is making the pictures not hovered over a bit smaller; This is the selector composition:hover composition__photo:not(:hover) */
+    transform: scale(0.95); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .3s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    /* color goes from right to left and goes light (far left) to dark (far right) */
+    -webkit-background-clip: text;
+    /* Background gets clipped exactly where text is but background is hidden due to text color that's why we need next line of code below which makes the text transparent and you see through to the background iamge of the linear gradient */
+    color: transparent;
+    /* Allows us to see the background image */ }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
 .row {
   max-width: 114rem;
   margin: 0 auto;
@@ -275,3 +332,12 @@ body {
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem; }
+  .section-features > * {
+    transform: skewY(7deg); }

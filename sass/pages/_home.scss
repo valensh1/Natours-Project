@@ -3,3 +3,19 @@
     padding: 25rem 0;
     margin-top: -20vh; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
 }
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(
+        to right bottom,  /* gradient runs from right to bottom */
+        rgba($color-primary-light, 0.8), /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+        rgba($color-primary-dark, 0.8)), /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+         url(../img/nat-4.jpg);
+         background-size: cover;
+         transform: skewY(-7deg); // This makes background image slant
+         margin-top: -10rem; // Need to put negative margin-top here so the slant background image doesn't leave any unintended white space between sections otherwise it doesn't look right.
+         
+         & > * { // This is basically selecting all the direct children which in this case is the row. Row has children underneath it but this selector gets ONLY direct children of .section-features
+            transform: skewY(7deg); // This basically puts our features boxes back straight; Otherwise they are slanted with our background image and we don't want that; Notice we do the opposite skew of above which was -7deg. We do positive 7deg here to offset.
+         }
+}
