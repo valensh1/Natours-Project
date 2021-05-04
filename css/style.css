@@ -243,7 +243,7 @@ body {
       left: 0;
       top: -2rem; }
     .composition__photo--p2 {
-      /* Organization of pics - right nost phoo */
+      /* Organization of pics - right most photo */
       right: 0;
       top: 2rem; }
     .composition__photo--p3 {
@@ -286,7 +286,8 @@ body {
   width: 75%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+  /* This .6 sets the opacity value and by making it .6 it allows us to see through to the background video */
   border-radius: .3rem;
   padding: 6rem;
   padding-left: 9rem;
@@ -302,7 +303,7 @@ body {
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     /* This actually creates the circle; The first 50% adjusts the circle size. The bigger the % the bigger the circle */
-    transform: translate(-3rem) skewX(12deg);
+    transform: translateX(-3rem) skewX(12deg);
     /* Best way to create some padding with a floated shape is to transform and translate as opposed to using padding or margin properties. Have to have the offset skew for all the properties inside the shape here as well as in line of code below &__text */
     position: relative;
     /* Need to position here so we can get the image caption to be centered */ }
@@ -435,6 +436,23 @@ body {
     font-size: 6rem;
     font-weight: 100; }
 
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  /* Disappears when z-index goes to -1. Elminate this and it displays background video. */
+  opacity: .15;
+  overflow: hidden;
+  /* This will make any part of video that overflows the container hidden. */ }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* This allows the video to fill parent element or cover entire parent element while maintaining aspect ratio. If it goes over it will be clipped off */ }
+
 .row {
   max-width: 114rem;
   margin: 0 auto;
@@ -515,5 +533,5 @@ body {
   margin-top: -10rem; }
 
 .section-stories {
-  padding: 15rem 0;
-  background-color: #f7f7f7; }
+  position: relative;
+  padding: 15rem 0; }

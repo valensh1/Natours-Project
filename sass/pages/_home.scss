@@ -4,6 +4,7 @@
     margin-top: -20vh; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
 }
 
+// This section .section-features is styling the section with the 4 cards - Explore the World / Meet Nature / Find Your Way / Live a Healthier Life
 .section-features {
     padding: 20rem 0;
     background-image: linear-gradient(
@@ -27,7 +28,7 @@
 }
 
 .section-stories {
+    position: relative;
     padding: 15rem 0;
-    background-color: $color-grey-light-1;
 }
 

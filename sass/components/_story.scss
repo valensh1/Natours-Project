@@ -1,8 +1,9 @@
+// Styling for Stories under Heading - WE MAKE PEOPLE GENUINELY HAPPY
 .story {
     width: 75%;
     margin: 0 auto;
     box-shadow: 0 3rem 6rem rgba($color-black, .1);
-    background-color: $color-white;
+    background-color: rgba($color-white, .6); /* This .6 sets the opacity value and by making it .6 it allows us to see through to the background video */
     border-radius: .3rem;
     padding: 6rem;
     padding-left: 9rem;
@@ -17,7 +18,7 @@
         shape-outside: circle(50% at 50% 50%); /* This property defines a shape for which adjacent inline content like text should wrap or flow around the circle. In order for this property to work it MUST be floated and have heigth and width properties. This means 50% of the rem which is 15 * 50% which is 7.5rem and then 50% of the x-axis and then 50% of the y-axis */
         -webkit-clip-path: circle(50% at 50% 50%);
         clip-path: circle(50% at 50% 50%); /* This actually creates the circle; The first 50% adjusts the circle size. The bigger the % the bigger the circle */
-        transform: translate(-3rem) skewX(12deg); /* Best way to create some padding with a floated shape is to transform and translate as opposed to using padding or margin properties. Have to have the offset skew for all the properties inside the shape here as well as in line of code below &__text */
+        transform: translateX(-3rem) skewX(12deg); /* Best way to create some padding with a floated shape is to transform and translate as opposed to using padding or margin properties. Have to have the offset skew for all the properties inside the shape here as well as in line of code below &__text */
         position: relative; /* Need to position here so we can get the image caption to be centered */
     }
 

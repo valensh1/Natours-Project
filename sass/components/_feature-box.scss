@@ -1,3 +1,4 @@
+// STYLING FOR FEATURE-BOXES - 4 BOXES THAT SAY EXPLORE THE WORLD / MEET NATURE / FIND YOUR WAY / LIVE A HEALTHIER LIFE
 .feature-box {
     background-color: rgba($color-white, .8);
     font-size: 1.5rem;
@@ -9,21 +10,16 @@
     
     
 
-&__icon { // Stylin for our icon in the feature box section
-    font-size: 6rem; // Decrease or increase size of icon by using the font-size
-    margin-bottom: .5rem;
-    display: inline-block;
-    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark); /* color goes from right to left and goes light (far left) to dark (far right) */
-    -webkit-background-clip: text; /* Background gets clipped exactly where text is but background is hidden due to text color that's why we need next line of code below which makes the text transparent and you see through to the background iamge of the linear gradient */
-    color:transparent; /* Allows us to see the background image */
-}
+    &__icon { // Styling for our icon in the feature box section
+        font-size: 6rem; // Decrease or increase size of icon by using the font-size
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark); /* color goes from right to left and goes light (far left) to dark (far right) */
+        -webkit-background-clip: text; /* Background gets clipped exactly where text is but background is hidden due to text color that's why we need next line of code below which makes the text transparent and you see through to the background iamge of the linear gradient */
+        color:transparent; /* Allows us to see the background image */
+    }
 
-&:hover {
-    transform: translateY(-1.5rem) scale(1.03);
-   
-    
-}
-
-
-
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
 }
