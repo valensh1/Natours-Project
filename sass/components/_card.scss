@@ -1,13 +1,12 @@
 .card {
+    // FUNCTIONALITY
     perspective: 150rem; // This makes the card when it is flipped look like its coming more towards you; The higher the rem the more dramatic the affect
     -moz-perspective: 150rem; // Needed to work in Firefox browswer
     position: relative;
-    height: 50rem; // This is needed because when you use position:absolute with a child like below the parent loses its height. So we need this to set the height = to the child of &__side
+    height: 52rem; // This is needed because when you use position:absolute with a child like below the parent loses its height. So we need this to set the height = to the child of &__side
 
     &__side {  // Class for the backside of our card
-        color:#fff;
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease; // Sets the duration of the animation of rotating the cards to .8s; If did not have ease animation specified it goes with most simple one which is linear
         position: absolute; // Need to position cards so that back can sit on bottom of front
         top: 0;
@@ -15,6 +14,7 @@
         width: 100%; // Give both cards 100% width of the parent which is the row so now it fills the entire width of the column within the row
         backface-visibility: hidden; // Determines in a transformed property that is rotated if there is a backside that would have its back to the user and it makes that backside hidden
         border-radius: .3rem;
+        overflow: hidden; // This retains border radius if image runs over. Once we added the picture it overran our radius and made our card completely square so putting this makes the image not overflow our border radius
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
 
@@ -29,15 +29,124 @@
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
         }
     }
    
 
     &:hover &__side--front { // same thing as .card:hover .card__side--front selector in regular CSS
-        transform: rotateY(180deg); // Rotation of tour cards to get to backside
+        transform: rotateY(-180deg); // Rotation of tour cards to get to backside
     }
 
     &:hover &__side--back { // same thing as .card:hover .card__side--back selector in regular CSS
         transform: rotateY(0); // When backside is hovered it goes to 0 which basically means it rotates from having its back facing the user to rotating to facing the user.
+    }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen; // Need this property to have the picture blend in with the linear gradient code below in the &--1. If remove this property its only the linear gradient that shows through since that is the first property listed out in the background-image property below. If the picture was listed first then withut this background blend property the picture would be the only one showing and not the linear gradient.
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Makes the slant on the picture in the tour card; This ensures it works in all browsers.
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Makes the slant on the picture in the tour card
+        border-top-left-radius: .3rem; // overflow hidden usually fixes this but when we use clip-path sometimes it screws up our border radius and overflow: hidden may not fix so we need to set radius manually like so.
+
+    &--1 {
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img/nat-5.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+    }
+
+    &--2 {
+        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img/nat-6.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+       
+    }
+
+    &--3 {
+        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img/nat-7.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+        
+    }
+  }
+
+
+  &__heading {
+      font-size: 2.8rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      text-align: right;
+      color: $color-white;
+      position: absolute;
+      top: 12rem;
+      right: 2rem;
+      width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem; // Our text due to width and size wraps in card. When you apply the padding since our text wraps it treats entire text to padding such as the padding in front of first word and padding after last word even though The Sea is on a separate line from Explorer on page. In order for it to give padding equally to both lines when text is wrapping we need this property below called box-decoration-break: clone;
+        -webkit-box-decoration-break: clone; // Need this to ensure works in all browsers. This ensure decorations of box are applied equally to all elements inside block and not just treat entire block as one element and give only padding to front and back but give padding to front and back for all elements within the block.
+        box-decoration-break: clone;  // Need this to ensure works in all browsers. This ensure decorations of box are applied equally to all elements inside block and not just treat entire block as one element and give only padding to front and back but give padding to front and back for all elements within the block.
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto; // Centering a block element within a block element centers the list
+            
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
+
+    // BACK SIDE STYLING
+    &__cta {
+        position: absolute;
+        top: 50%; // With absolute positioning this centers in vertically
+        left: 50%;  // With absolute positioning this centers in horizontally
+        transform: translate(-50%, -50%); // Due to content sizing this will leave the content starting in exact center but this property accounts for height and width of content so it centers it exactly on page
+        width: 90%;
+        text-align: center;
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
     }
 }

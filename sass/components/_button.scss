@@ -35,6 +35,15 @@
         }
     }
 
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+            
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     &::after {  /* Should match most of the properties from .btn:link and .btn:visited above as we want this to hide behind button and only be visible after we hover */
         content: ""; /* This is for putting content like text after something. In our case we don't want to put any text we just want this blank */
         display: inline-block; /* Need to keep same as .btn:link and .btn:visted above */
