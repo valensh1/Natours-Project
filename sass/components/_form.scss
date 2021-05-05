@@ -1,0 +1,96 @@
+.form {
+
+        &__group:not(:last-child) {
+            margin-bottom: 2rem;;
+        }
+
+        &__input {
+            font-size: 1.5rem;
+            font-family: inherit;
+            color: inherit;
+            padding: 1.5rem 2rem; /* top bottom is first input and sides are the 2nd input. */
+            border-radius: 2px;
+            background-color: rgba($color-white, .5);
+            border: none;
+            border-bottom: .3rem solid transparent; /* Fixes the issue where the bottom input of email address kept moving down a little bit but was noticeable when Full Name got put in focus. The reason this was happening was because when Full Name got put in focus it created the green border and pushed the Email Address input field down. By creating a border for it already in its current state before focus but making the border transparent so you don't see it fixes the issue because its already there. Now when it becomes in focus it just turns from transparent to green */
+            width: 90%;
+            display: block; /* Forces each input to have its own line with label at bottom; Before inserting this the label was on the side */
+            transition: all .3s;
+
+                &:focus {   /* This eliminates the standard blue box on input when it is in focus but creates a custom focus with a green underline and box shadow instead */
+                outline: none;
+                box-shadow: 0 1rem 2rem rgba($color-black, .1);
+                border-bottom: .3rem solid $color-primary;
+
+                &:invalid {   /* This will keep a solid reddish dark bottom border while input is invalid or blank when it is in focus. Once input is valid it will switch to green border while in focus to let you know that the input is good */
+                    border-bottom: .3rem solid $color-secondary-dark;
+                }
+            }
+        
+            &::-webkit-input-placeholder {
+                color: $color-grey-dark-2; /* This is the color of the placeholder text before you type something in the input */
+            }
+        
+        }
+
+        &__label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-left: 2rem;
+            margin-top: .7rem;
+            display: block;
+            transition: all .3s; /* Used as transition for any animmations on form__label below */
+        }
+
+        &__input:placeholder-shown + &__label { /* + is the immediate adjacent sibling selector for the label. This is the labels status before anything is typed in input fields which is that label is hidden and not shown; This causes label that normally sits below input field to be hidden. You need both visibility: hidden and opacity at 0 because you can't animate visibility:hidden but you can animate the opacity */
+            opacity: 0; /* This is the labels status before anything is typed in input fields which is that label is hidden and not shown; This causes label that normally sits below input field to be hidden. You need both visibility: hidden and opacity at 0 because you can't animate visibility:hidden but you can animate the opacity */
+            visibility: hidden; /* This is the labels status before anything is typed in input fields which is that label is hidden and not shown; This causes label that normally sits below input field to be hidden. You need both visibility: hidden and opacity at 0 because you can't animate visibility:hidden but you can animate the opacity */
+            transform: translateY(-4rem); /* This causes labels starting position to be in input field but hidden. So when something is typed you will see the animation of the label going to its normal position which is below the input field and the animation is .3s in duration as indentified in block of code above in &__label - transition: all .3s */
+        }
+
+        &__radio-group {
+        width: 49%;
+        display: inline-block; 
+        }
+
+        &__radio-input {
+            display: none;
+        }
+
+        &__radio-label {
+            font-size: $default-font-size;
+            cursor: pointer;
+            position: relative; /* This is made position:relative so we can absolutely position the &__radio-button */
+            padding-left: 4.5rem; /* Give label some space from the radio button */
+        }
+
+        &__radio-button { /* This is the custom radio button we created through the <span> tag */
+            height: 3rem;
+            width: 3rem;
+            border: .5rem solid $color-primary;
+            border-radius: 50%; /* Border radius of 50% makes a circle */
+            display: inline-block; /* Need inline-block to keep the radio buttons on same line and for height and width properties to work as height and width only work with inline-block or block elements */
+            position: absolute; /* position absolute from parent &__radio-label */
+            left: 0;
+            top: -.4rem;
+
+            &::after { /* This is the inner circle created when we select one of the radio buttons; In other words this is the selection of one of the radio buttons */
+                content: "";
+                display: block;
+                height: 1.3rem;
+                width: 1.3rem;
+                border-radius: 50%; /* Border radius of 50% makes a circle */
+                position: absolute;  /* You can absolute position an item to its parent even though its parent which is &__radio-button is not relative positioned but can do it as long as the parent is positioned either relative or absolute. Parent in this case is positioned absolute instead of relative because the parent is needed to be positioned absolute to its own parent */
+                top: 50%; /* Centering from top */
+                left: 50%; /* Centering from left */
+                transform: translate(-50%, -50%); /* Offset needed to account for sizing of content to completely center element */
+                background-color: $color-primary;
+                opacity: 0;
+                transition: opacity .2s; /* This is the animation duration for the opacity of the radio button once it is checked. This transition property is related to the &__radio-input:checked ~ &__radio-label &__radio-button::after opacity: 1 below. This line of code could also be inserted there and work as well */
+            }
+        }
+
+            &__radio-input:checked ~ &__radio-label &__radio-button::after { /* This is selecting the &__radio-input and ~ means any sibling of &__radio-input which is $__radio-label and then the &__radio-button with the after selector */
+                opacity: 1; /* transition: opacity .2s could work here as well instead of up above in &::after */
+            }
+}
