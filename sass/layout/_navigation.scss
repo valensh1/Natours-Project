@@ -1,0 +1,115 @@
+.navigation {
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        background-color: $color-white;
+        height: 7rem; /* 7rem to cover the &__background below */
+        width: 7rem;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+
+    }
+
+    &__background { /* This is the gradient background that contains the menu when you hit the hamburger circle button. This is a radial gradient that is just blown up really big */
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed; /* It doesn't change position as we scroll page */
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark); /* Lighter green on inside of circle and outerpart of circle is darker */
+        z-index: 1000; /* To ensure this stays on top of everything when scrolling page. This only works on positioned elements or flex items */
+        transition: transform .8s cubic-bezier(.86, 0, 0.07, 1); /* This is causing the animation of the &__checkbox:checked ~ &__background below to take .8s */
+        
+
+    }
+
+    &__nav {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1500;
+        
+
+        opacity: 0; /* Hiding our menu item on page */
+        width: 0; /* Making our menu navigation further hidden with 0 width; Without this our menu was hidden due to opacity above but our links are still present on page an when hovered over the hand would show. By putting a width of 0 the links go away */
+        transition: all .8s cubic-bezier(.68, -0.55, 0.265, 1.55); /* animation duration of our animation of the &__checkbox:checked ~ &__nav below which upon selecting the circular hamburger menu button will drop a radiant background and turn the opacity and width of our menu items that begin hidden with an opacity at 0 to now visible with an opacity of .8 along with now giving the block a width of 100% */
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center; /* Centers text on their own lines. */
+        width: 100%;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        &:link,
+        &:visited { /* This is the styles for the menu bar links such as About Natours, Your Benefits, Popular Tours, Stories, Book Now, etc. once pressing the hamburger button -- See Excel notes in CSS tab for sketch of how this works */
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%); /* Creates half transparent and half white block with a slanted 50% split */
+            background-size: 220%; /* This increases the overall size of the linear gradient so we are now just cropped in on a certain part of the image but image is much bigger so we are currently at 0% 0% (x, y) position (upper left corner of image that is transparent a transparent background because 1st 50% of image is transparent). Default image position is 0% 0% (x, y). When we hover we move the position showing on the background image that is much larger than the portion we are showing to (100% x, 0% Y) which takes us to a new part of image (upper right) that is covered in white and no longer transparent thus giving us the animated affect.  */
+            transition: all .4s;
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        
+        &:hover,
+        &:active {
+            background-position: 100%; /* This moves background image shown from top left corner of image at (0 x, 0 y) to (100 x, 0 y) which is top right corner of inline-block that is 220% in size so we move the block shown to the right side which is the white color giving us the animation when we hover with now only the white side of the block showing on hover. */
+            color: $color-primary;
+            transform: translateX(1rem);
+        }  
+        
+    }
+
+    /* FUNCTIONALITY */
+    &__checkbox:checked ~ &__background { /* animations that change the standard styles when checked */
+        transform: scale(91);
+    }
+
+    &__checkbox:checked ~ &__nav { /* animations that change the standard styles when checked */
+        opacity: 1;
+        width: 100%;
+    }
+
+    &__icon {
+        &,
+        &::before,
+        &::after {
+            width: 3rem; /* The height and width property here create a line */
+            height: .2rem; /* The height and width property here create a line */
+            background-color: $color-grey-dark-3; /* This is the color of the line on the hamburger menu */
+            display: inline-block;
+        }
+        
+        &::before,  /* This creates an extra line before and after the original line for the hamburger menu */
+        &::after {
+            content:""; 
+        }
+    }
+}
