@@ -13,10 +13,11 @@
         border-radius: 50%;
         z-index: 2000;
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
-
+        text-align: center; /* horizontally centers inline elements such as how we are centering the span tag here which contains our hamburger lines */
+        cursor: pointer; /* Creates a hand cursor when hovering over hamburger menu */
     }
 
-    &__background { /* This is the gradient background that contains the menu when you hit the hamburger circle button. This is a radial gradient that is just blown up really big */
+    &__background { /* This is the gradient background that contains the menu when you hit the hamburger circle button. This is a radial gradient that is just blown up really big when clicking the hamburger menu. Its animation is it blows up really big. */
         height: 6rem;
         width: 6rem;
         border-radius: 50%;
@@ -98,18 +99,51 @@
     }
 
     &__icon {
-        &,
-        &::before,
-        &::after {
-            width: 3rem; /* The height and width property here create a line */
-            height: .2rem; /* The height and width property here create a line */
-            background-color: $color-grey-dark-3; /* This is the color of the line on the hamburger menu */
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,  /* creation of 3 hamburger lines here - this is the middle line */
+        &::before, /* creation of 3 hamburger lines here - this is the top line */
+        &::after {  /* creation of 3 hamburger lines here - this is the bottom line */
+            width: 3rem; /* The height and width property here create a line on hamburger menu when combined with background color */
+            height: .2rem; /* The height and width property here create a line when combined with background color*/
+            background-color: $color-grey-dark-3; /* This is the color of the line on the hamburger menu and when combined with height and width create a colored line for our hamburger menu */
             display: inline-block;
         }
         
         &::before,  /* This creates an extra line before and after the original line for the hamburger menu */
         &::after {
-            content:""; 
+            content:"";
+            position: absolute; /* positioned absolute relative to the span element in the $__icon */
+            left: 0;
+            transition: all .2s;
         }
+
+        &::before { top: -.8rem; } /* Creates the spacing for the hamburger menu. This is the top line spacing */
+        &::after { top: .8rem; } /* Creates the spacing for the hamburger menu. This is the bottom line spacing */
     }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked + &__button &__icon { /* When we select/check the hamburger menu this is then selecting the navigation__button and then going deeper and selecting the navigation__icon */
+        background-color: transparent; /* This makes the middle bar see through or invisible when selecting the hamburger menu. We can't get rid of it because our :before and :after bars are positioned accordingly to this middle bar. Getting rid of it completely in animation would mess up the positioning of our other bars. Opacity at 0 does not work here because opacity applies to the elment as a whole including its contents and pseduo elements like :before and :after. */  
+    }
+
+    &__checkbox:checked + &__button &__icon::before { /* When we select/check the hamburger menu this is then selecting the navigation__button and then going deeper and selecting the navigation__icon */
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked + &__button &__icon::after { /* When we select/check the hamburger menu this is then selecting the navigation__button and then going deeper and selecting the navigation__icon */
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+
 }
