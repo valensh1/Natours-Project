@@ -1,0 +1,90 @@
+.popup {
+    position: fixed; /* placing this popup window when book in the middle of the page */
+    height: 100vh; /* Make this cover the entire site when popup occurs */
+    width: 100%; /* This not really needed since its a block element that takes the entire wideth of page */
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8); /* Make entire 100vh black with a very dark opacity */
+    z-index: 9999; /* High z-index so it shows on top of everything else with all the other content blacked out behind it */
+    opacity: 0; /* Hiding the popup. Only include this because we need to animate this property upon opening the popup. If wasn't animating then the visibility:hidden would be all we need */
+    visibility: hidden; /* Need visibility hidden with opacity being at 0 because if we ony have opacity at 0 the content will still be there and you might be able to select something but we want it completely hidden so you can't accidentally select something even though its opacity is at 0. We could just use this by itself without the opacity being at 0 and it would hide it but we want the opacity on there at 0 because we are going to animate the opacity upon the popup opening. */
+
+    &__content {
+        @include absCenter; /* inclusion of mixin where the mixin is centering the inline objects within this block or div element */
+        width: 75%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: .3rem;
+        display: table; /* Technique to get pictures on left side of popup the same height as the right side with the text */
+        overflow: hidden; /* images were overlapping our rounded borders. So when you do overflow hidden the images will not overlap and will allow those borders to be rounded again */
+        opacity: 0; /* Popup content starts with an opacity of 0 so you don't see it right away */
+        transform: translate(-50%, -50%) scale(.25); /* Start the popup content at only a .25 scale when first turning visible and then scaling all the way to 1 with animation */
+        transition: all .5s .2s; /* .5s timing of animation and .2s is the delay. This is animating the beginning properties in this block of code to the finished state of the properties after the animation is run as specified down below in the :target &__content selector where it has opacity of 1 and transform: translate(-50%, -50%) scale(1);  */
+    }
+
+    &__left {
+       width: 33.333333%; 
+       display: table-cell; /* Technique to get pictures on left side of popup the same height as the right side with the text */
+    }
+
+    &__right {
+        width: 66.6666667%;
+        display: table-cell; /* Technique to get text on right side of popup the same height as the left side with the pictures */
+        vertical-align: middle; /* Vertically align property goes with display: table property to vertically align text */
+        padding: 3rem 5rem;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+    
+        -moz-column-count: 2; /* This creates the 2 columns in the booking popup; Prefix for older browsers. */
+        -moz-column-gap: 4rem; /* This creates the gap in the 2 columns and gives it spacing. Prefix for older browsers. */
+        -moz-column-rule: .1rem solid $color-grey-light-2; /* This puts the subtle grey line between the 2 columns. Prefix for older browsers. */
+        
+        column-count: 2; /* This creates the 2 columns in the booking popup */
+        column-gap: 4rem; /* This creates the gap in the 2 columns and gives it spacing */
+        column-rule: .1rem solid $color-grey-light-2; /* This puts the subtle grey line between the 2 columns */
+
+        -moz-hyphens: auto; /* These are prefixes for older browsers in order for it to work */
+        -ms-hyphens: auto; /* These are prefixes for older browsers in order for it to work */
+        -webkit-hyphens: auto; /* These are prefixes for older browsers in order for it to work */
+        hyphens: auto; /* Will automatically figure out where to place hyphens where words get cut-off in columns and go to next line. Need to make sure HTML file at top says lang= "en" for language */
+    }
+
+    /* OPEN STATES */
+    &:target { /* When click on Book Now button in our tours section the <a> tag references the href of "#popup" and put its in the browser. This selector picks up the target element of #popup in the browser and with this pseduo class of :target you are able to put styles on it */
+        opacity: 1; /* when Book Now button is selected the opacity goes to 1 so we see the popup */
+        visibility: visible; /* when Book Now button is selected the visibility goes from hiddent to visible */
+        transition: all .3s; /* This is the animation timing on the opacity and visibility of the popup window. */
+    }
+
+    &:target &__content { /* This is the animation properties of the popup window. Upon selecting book now button we want to change opacity to 1 so we see the popup content and transform it which is bascially centering it and scaling it from .25 where it starts from (see code above in &__content) to scale 1. */
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close { /* This is the styling of the X on the popup window */
+        &:link,
+        &:visited {
+            color:$color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1; /* moved X up a bit but we could have probably also adjusted the absolute positioning on this to move it as well */
+        }
+
+        &:hover {
+            color: $color-primary; /* Animation of turning X to close popup window green upon hover */
+        }
+    }
+}

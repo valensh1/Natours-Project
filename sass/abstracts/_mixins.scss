@@ -5,3 +5,10 @@
         clear: both;
     }
 }
+
+@mixin absCenter { /* mixin for centering inline content within a block element. Used this on our popup once you click book now */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
