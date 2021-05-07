@@ -7,10 +7,34 @@
 }
 
 html {
-    font-size: 62.5%; /* All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */
+    font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5%; All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */
+    
+    /* 
+    ALWAYS INCLUDE BIGGER SCREENS FIRST AND SMALLER SCREENS LAST
+    Reason for this is if you have a screen size that is 500 px. Well that screen size meets the requirements for all the media queries because 500 is less than all our major breakpoints such as its less than 1800 its less than 1200 which is less than 900 etc. So when
+    there are conflicting media queries the one that is included last in the code takes precedence thats why we start with the biggest media queries on top and go smaller when doing Desktop to Mobile design.
+    */
+
+  
+    @include respond (tab-land) {  /* width < 1200 */
+        font-size: 56.25%;     /* If want the equivalent of 9px here we need to do this math --> 9px/16px = 56.25% */
+    }
+   
+    @include respond (tab-port) { /* width < 900 */
+        font-size: 50%;   /* If want the equivalent of 8px here we need to do this math --> 8px/16px = 50% */
+    }
+
+    // @include respond (phone) { /* width < 600 */
+    //     font-size: 30%;   /* If want the equivalent of 4.8px here we need to do this math --> 4.8px/16px = 30% */
+    // }
+  
+    @include respond (big-desktop) { /* width < 1800 */
+        font-size: 75%; /* If want the equivalent of 12px here we need to do this math --> 12px/16px = 75% */
+    }  
 }
 
 
 body {
     box-sizing: border-box; /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */
 }
+

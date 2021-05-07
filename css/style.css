@@ -1,3 +1,22 @@
+/* 
+
+MEDIA QUERY MANAGER 
+
+0 - 600px:          Phone
+600 - 900px:        Tablet Portrait
+900 - 1200px:       Tablet Landscape
+[1200 - 1800px]:    Where our normal styles apply
+1800px +:           Big desktop
+
+--> rem's don't work good for media queries for certain browsers so even though we used rem throughout our project we are going to use em's here which work much better with media queries 
+--> 1em = 16px
+--> convert screen sizes above into em's
+        > Phone = 600px / 16px = 37.5em
+        > Phone = 900px / 16px = 56.25em
+        > Phone = 1200px / 16px = 75em
+        > Phone = 1800px / 16px = 112.5em
+       
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -53,7 +72,27 @@
 
 html {
   font-size: 62.5%;
-  /* All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */ }
+  /* 1rem = 10px; 10px/16px = 62.5%; All rem's based off this % here which is based originally off of 10px; Wanted to use everything by 10px. All the rem's originally used to style page used 10px but to make page more responsive and easier to modify we take the rem size we used to model our page after and then we divide that by the normal user font size which is 16px (10 /16 = .625 or 62.5%). Now this will take user font-size and scale it down to 62.5% and then adjust all our font-sizes accordingly throughout the page. */
+  /* 
+    ALWAYS INCLUDE BIGGER SCREENS FIRST AND SMALLER SCREENS LAST
+    Reason for this is if you have a screen size that is 500 px. Well that screen size meets the requirements for all the media queries because 500 is less than all our major breakpoints such as its less than 1800 its less than 1200 which is less than 900 etc. So when
+    there are conflicting media queries the one that is included last in the code takes precedence thats why we start with the biggest media queries on top and go smaller when doing Desktop to Mobile design.
+    */ }
+  @media (max-width: 75em) {
+    html {
+      /* width < 1200 */
+      font-size: 56.25%;
+      /* If want the equivalent of 9px here we need to do this math --> 9px/16px = 56.25% */ } }
+  @media (max-width: 56.25em) {
+    html {
+      /* width < 900 */
+      font-size: 50%;
+      /* If want the equivalent of 8px here we need to do this math --> 8px/16px = 50% */ } }
+  @media (min-width: 112.5em) {
+    html {
+      /* width < 1800 */
+      font-size: 75%;
+      /* If want the equivalent of 12px here we need to do this math --> 12px/16px = 75% */ } }
 
 body {
   box-sizing: border-box;
