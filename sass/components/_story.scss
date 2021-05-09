@@ -8,7 +8,17 @@
     padding: 6rem;
     padding-left: 9rem;
     font-size: $default-font-size;
-    transform: skewX(-12deg);
+    transform: skewX(-12deg); /* Shape created in stories section */
+
+    @include respond(tab-port) {
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+    }
+
+    @include respond(phone) {
+        transform: skewX(0);
+    }
 
     &__shape {
         width: 15rem;
@@ -22,6 +32,10 @@
         position: relative; /* Need to position here so we can get the image caption to be centered */
     }
 
+    @include respond(phone) {
+        transform: translateX(-3rem) skewX(0); /* Eliminating the slanting of the shape and text in mobile phone design */
+    }
+
     &__img {
         height: 100%;
         transform: translateX(-4rem) scale(1.4); /* Moves picture and makes it more centered. The gal in the boat was too far off to right */
@@ -31,6 +45,10 @@
 
     &__text {
         transform: skewX(12deg); /* This is the offset to the slanted shape skew so that text etc. isn't slanted as well and that they remain completely horizontal. This also needs to be added in &__shape transform property above. */
+    
+        @include respond (phone) {
+        transform: skewX(0deg); /* Elimination of the slanted text in mobile phone design */
+        }
     }
 
     &__caption {

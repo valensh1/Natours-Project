@@ -8,6 +8,9 @@
     box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
     transition: transform .3s; // This is the transition animation duration when we hover and how long it takes to scale back down after it is no longer hovered over; This could also go down in the hover selector but after you hover over it there is no delay in scaling down. Having it here has the .3s delay when hovered and when not hovered it has a .3s delay to scale back down
     
+    @include respond(tab-port) {
+        padding: 2rem;
+    }
     
 
     &__icon { // Styling for our icon in the feature box section
@@ -17,6 +20,11 @@
         background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark); /* color goes from right to left and goes light (far left) to dark (far right) */
         -webkit-background-clip: text; /* Background gets clipped exactly where text is but background is hidden due to text color that's why we need next line of code below which makes the text transparent and you see through to the background iamge of the linear gradient */
         color:transparent; /* Allows us to see the background image */
+    
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
+    
     }
 
     &:hover {

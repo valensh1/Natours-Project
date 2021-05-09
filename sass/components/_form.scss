@@ -17,6 +17,10 @@
             display: block; /* Forces each input to have its own line with label at bottom; Before inserting this the label was on the side */
             transition: all .3s;
 
+            @include respond(tab-port) {
+                width: 100%;
+            }
+
                 &:focus {   /* This eliminates the standard blue box on input when it is in focus but creates a custom focus with a green underline and box shadow instead */
                 outline: none;
                 box-shadow: 0 1rem 2rem rgba($color-black, .1);
@@ -30,7 +34,6 @@
             &::-webkit-input-placeholder {
                 color: $color-grey-dark-2; /* This is the color of the placeholder text before you type something in the input */
             }
-        
         }
 
         &__label {
@@ -51,6 +54,13 @@
         &__radio-group {
         width: 49%;
         display: inline-block; 
+
+        @include respond(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+
         }
 
         &__radio-input {

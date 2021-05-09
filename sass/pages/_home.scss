@@ -2,6 +2,10 @@
     background-color: $color-grey-light-1;
     padding: 25rem 0;
     margin-top: -20vh; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
+
+    @include respond(tab-port) {
+        padding: 30rem 0;
+    }
 }
 
 // This section .section-features is styling the section with the 4 cards - Explore the World / Meet Nature / Find Your Way / Live a Healthier Life
@@ -19,22 +23,39 @@
          & > * { // This is basically selecting all the direct children which in this case is the row. Row has children underneath it but this selector gets ONLY direct children of .section-features
             transform: skewY(7deg); // This basically puts our features boxes back straight; Otherwise they are slanted with our background image and we don't want that; Notice we do the opposite skew of above which was -7deg. We do positive 7deg here to offset.
          }
-}
+
+         @include respond(tab-port) {
+            padding: 10rem 0;
+        }
+    }
 
 .section-tours {
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0;
     margin-top: -10rem; // Put negative margin to get about section to move up so the gray background color butts up right against the green clip-path in our heading. If didn't do this there would be a gap between green and gray that is white for part of clip-path that goes up.
+
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0;
+        margin-top: -20rem;
+    }
 }
 
 .section-stories {
     position: relative; /* Positioned relative so video .bg-video__content can be positioned absolute */
     padding: 15rem 0;
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .section-book {
     padding: 15rem 0;
     background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .book { /* This is the booking window to book an appointment */
@@ -46,10 +67,34 @@
     background-size: 100%; /* 100% is the same thing as cover */
     border-radius: .3rem; /* rounds corner of image */
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
-    height: 50rem;
+    
+
+    @include respond(tab-land) {
+        background-image: linear-gradient(105deg, /* This is the degree at which it splits our gradient and our picture or different color */
+                                        rgba($color-white, .9) 0%, /* at 0% we want white color */
+                                        rgba($color-white, .9) 65%, /* at 70% we want white color */
+                                         transparent 65%), /* AT 70% we want orangered color  This will create a solid color gradient at 70%. If you put transparent it will show the image at 70% */
+                                         url(../../img/nat-10.jpg); /* Linear-gradient with background image */
+        background-size: cover; /* As the mobile device got smaller the image shrunk for some reason and wouldn't cover even though it is stated as background size 100% above so cover just fixes this in our media query with the smaller screens. */
+    }
+
+    @include respond(tab-port) {
+        background-image: linear-gradient(to right, /* This is the degree at which it splits our gradient and our picture or different color */
+                                        rgba($color-white, .9) 0%, /* at 0% we want white color */
+                                        rgba($color-white, .9) 100%), /* at 100% we want white color */
+                                         url(../../img/nat-10.jpg); /* Linear-gradient with background image */
+    }
 
         &__form {
             width: 50%;
             padding: 6rem;
-        }
+
+          @include respond (tab-land) {
+              width: 65%;
+          } 
+
+          @include respond (tab-port) {
+            width: 100%;
+        } 
+    }
 }

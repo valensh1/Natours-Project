@@ -4,7 +4,6 @@ body {
     font-size: $default-font-size;
     line-height: 1.7;
     color: $color-grey-dark;
-    padding: 3rem;
 }
 
 .heading-primary {
@@ -22,6 +21,11 @@ body {
         animation-duration: 1s;
         animation-timing-function: ease-out;
         padding-left: 3.5rem;
+
+        @include respond (phone) {
+            letter-spacing: 1rem;
+            font-size: 5rem;
+        }
     }
     
     &--sub {
@@ -31,6 +35,10 @@ body {
         letter-spacing: 1.75rem;
         animation: moveInRight 1s ease-out; /* All animation properties specified in one line instead of listing out each one separately on to its own line like .heading-primary-main above. These properties could be listed out in any order. Order does not matter here. */
         padding-left: 1.75rem;
+
+        @include respond (phone) {
+            letter-spacing: .5rem;
+        }
     }
 }
 
@@ -43,7 +51,17 @@ body {
     -webkit-background-clip: text; // Background gets clipped exactly where text is but background is hidden due to text color that's why we need next line of code below which makes the text transparent and you see through to the background iamge of the linear gradient 
     color:transparent; // Allows us to see the background image
     letter-spacing: .2rem;
+    margin-top: 3rem; /* Added this to code to add a bit of margin because this heading was too close to clip-path art */
     transition: all .2s;
+
+    @include respond (tab-port) {
+        font-size: 2.5rem;
+    }
+
+    @include respond (phone) {
+        font-size: 2rem;
+        margin-top: 8rem;
+    }
 
     &:hover {
         transform: skew(15deg, 2deg) scale(1.1); // first number is the x axis and the 2nd number is the y-axis

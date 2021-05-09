@@ -150,4 +150,56 @@
         font-size: 6rem;
         font-weight: 100;
     }
+
+    /*----------------------------------------------------MEDIA QUERY-------------------------------------------------------------*/
+    @include respond (tab-port) {
+      
+
+
+        .card {
+            // FUNCTIONALITY
+            height: 8rem; 
+            border-radius: .3rem;
+            background-color: $color-white;
+            box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+            &__side {  // Classes for the sides of our card
+                height: auto;
+                transition: all .8s ease; // Sets the duration of the animation of rotating the cards to .8s; If did not have ease animation specified it goes with most simple one which is linear
+                position: relative; // No need to have absolute positioning anymore like for desktop version which was to get backside of card to sit perfectly behind front side.
+                box-shadow: none;
+        
+                &--back {
+                    transform: rotateY(0); // Should not rotate at all for mobile design
+                    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+                }
+            }
+           
+            &:hover &__side--front { // same thing as .card:hover .card__side--front selector in regular CSS
+                transform: rotateY(0); // Should not rotate at all for mobile design
+            }
+
+            &__details {
+                padding: 1rem 3rem;
+            }
+            
+            // BACK SIDE STYLING
+            &__cta {
+                position: relative;
+                top: 0%; // With absolute positioning this centers in vertically
+                left: 0%;  // With absolute positioning this centers in horizontally
+                transform: translate(0); // Due to content sizing this will leave the content starting in exact center but this property accounts for height and width of content so it centers it exactly on page
+                width: 100%;
+                padding: 7rem 4rem 4rem 4rem;
+            }
+        
+            &__price-box {
+                margin-bottom: 3rem;
+            }
+        
+            &__price-value {
+                font-size: 4rem;
+            }
+        }
+    }
 }

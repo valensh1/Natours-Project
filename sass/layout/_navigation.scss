@@ -15,6 +15,17 @@
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
         text-align: center; /* horizontally centers inline elements such as how we are centering the span tag here which contains our hamburger lines */
         cursor: pointer; /* Creates a hand cursor when hovering over hamburger menu */
+    
+        @include respond(tab-port) {
+            top: 4rem;
+            right: 4rem;
+        }
+
+        @include respond(phone) {
+            top: 3rem;
+            right: 3rem;
+        }
+    
     }
 
     &__background { /* This is the gradient background that contains the menu when you hit the hamburger circle button. This is a radial gradient that is just blown up really big when clicking the hamburger menu. Its animation is it blows up really big. */
@@ -28,6 +39,15 @@
         z-index: 1000; /* To ensure this stays on top of everything when scrolling page. This only works on positioned elements or flex items */
         transition: transform .8s cubic-bezier(.86, 0, 0.07, 1); /* This is causing the animation of the &__checkbox:checked ~ &__background below to take .8s */
         
+        @include respond(tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
 
     }
 

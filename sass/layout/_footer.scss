@@ -4,9 +4,17 @@
     font-size: 1.4rem;
     color: $color-grey-light-1;
 
+    @include respond(tab-port) {
+        padding: 8rem 0;
+    }
+
     &__logo-box {
         text-align: center;  /* Center inline property within a block element or div container by using text-align center as <img> tag is inline and thus is treated like text for centering purposes */
         margin-bottom: 8rem;
+
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__logo {
@@ -18,6 +26,12 @@
         border-top: 1px solid $color-grey-dark;
         padding-top: 2rem;
         display: inline-block; /* border-top above was extending past the li items and we want line to only be above li item and not extend out beyond li items; To fix this we make the element inline-block because the div will only be as wide as its content and thus the border will not overun the text */   
+    
+        @include respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
+    
     }
 
     &__list {
@@ -57,5 +71,10 @@
         padding-top: 2rem;
         width: 80%;
         float: right;
+
+        @include respond (tab-port) {
+            width: 100%;
+            float: none;
+        }
     }
 }

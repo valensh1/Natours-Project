@@ -36,5 +36,10 @@ html {
 
 body {
     box-sizing: border-box; /* Eliminates margins and padding in width and height of box. When you specify an elements width or height that measurement will include the margin and padding. The border box property adjusts the box accordingly to make the box the total measurements specified. Other properties if set width to 100% for example the border and padding would cause element to protrude further out from it box or container. */
+    padding: 3rem;
+
+    @include respond (tab-port) {  /* width < 900 */
+        padding: 0; /* reduced padding around the shape at heading where it says Outdoors Is Where Life Happens for devices below 900px */ 
+    }
 }
 
