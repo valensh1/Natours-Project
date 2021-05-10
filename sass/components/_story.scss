@@ -30,6 +30,12 @@
         clip-path: circle(50% at 50% 50%); /* This actually creates the circle; The first 50% adjusts the circle size. The bigger the % the bigger the circle */
         transform: translateX(-3rem) skewX(12deg); /* Best way to create some padding with a floated shape is to transform and translate as opposed to using padding or margin properties. Have to have the offset skew for all the properties inside the shape here as well as in line of code below &__text */
         position: relative; /* Need to position here so we can get the image caption to be centered */
+        overflow: hidden;
+
+        @supports (clip-path: polygon(0 0))or (-webkit-clip-path: polygon(0 0)) { /* Property that runs if browswer supports property; Just need to put 0 0 for clip-path because its just saying if browser recognizes property at all then do the code below */
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%); /* This actually creates the circle; The first 50% adjusts the circle size. The bigger the % the bigger the circle */
+        }
     }
 
     @include respond(phone) {

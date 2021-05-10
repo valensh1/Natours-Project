@@ -43,3 +43,8 @@ body {
     }
 }
 
+::selection { /* Upon selecting various text on page within a paragraph it will turn the background color to $color-primary which is green and change the text color to white. If you don't include this property then it is just standard browswer functionality when selecting text but this adds our own style to things */
+   background-color: $color-primary;
+   color: $color-white;
+}
+

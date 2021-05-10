@@ -152,13 +152,12 @@
     }
 
     /*----------------------------------------------------MEDIA QUERY-------------------------------------------------------------*/
-    @include respond (tab-port) {
-      
-
-
-        .card {
+    // @include respond (tab-port) {
+        @media only screen and (max-width: 56.25em), /* Applies code below to all screens that are below 900px or 56.25em OR only screens where there is no hover functionality such as on touch screen devices */
+            only screen and (hover:none) {
+        
             // FUNCTIONALITY
-            height: 8rem; 
+            height: auto; 
             border-radius: .3rem;
             background-color: $color-white;
             box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
@@ -200,6 +199,6 @@
             &__price-value {
                 font-size: 4rem;
             }
-        }
+        
     }
 }

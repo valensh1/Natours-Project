@@ -7,8 +7,10 @@
     background-color: rgba($color-black, .8); /* Make entire 100vh black with a very dark opacity */
     z-index: 9999; /* High z-index so it shows on top of everything else with all the other content blacked out behind it */
     opacity: 0; /* Hiding the popup. Only include this because we need to animate this property upon opening the popup. If wasn't animating then the visibility:hidden would be all we need */
+    backdrop-filter: blur(10px); /* blurs background which we used to blur the background when our popup comes up */
     visibility: hidden; /* Need visibility hidden with opacity being at 0 because if we ony have opacity at 0 the content will still be there and you might be able to select something but we want it completely hidden so you can't accidentally select something even though its opacity is at 0. We could just use this by itself without the opacity being at 0 and it would hide it but we want the opacity on there at 0 because we are going to animate the opacity upon the popup opening. */
-
+    transition: all .3s;
+    
     &__content {
         @include absCenter; /* inclusion of mixin where the mixin is centering the inline objects within this block or div element */
         width: 75%;
