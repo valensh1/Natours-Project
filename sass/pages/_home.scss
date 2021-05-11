@@ -63,7 +63,7 @@
                                         rgba($color-white, .9) 0%, /* at 0% we want white color */
                                         rgba($color-white, .9) 50%, /* at 50% we want white color */
                                          transparent 50%), /* AT 50% we want orangered color  This will create a solid color gradient at 50%. If you put transparent it will show the image at 50% */
-                                         url(../../img/nat-10.jpg); /* Linear-gradient with background image */
+                                         url(../img/nat-10.jpg); /* Linear-gradient with background image */
     background-size: 100%; /* 100% is the same thing as cover */
     border-radius: .3rem; /* rounds corner of image */
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
@@ -74,7 +74,7 @@
                                         rgba($color-white, .9) 0%, /* at 0% we want white color */
                                         rgba($color-white, .9) 65%, /* at 70% we want white color */
                                          transparent 65%), /* AT 70% we want orangered color  This will create a solid color gradient at 70%. If you put transparent it will show the image at 70% */
-                                         url(../../img/nat-10.jpg); /* Linear-gradient with background image */
+                                         url(../img/nat-10.jpg); /* Linear-gradient with background image */
         background-size: cover; /* As the mobile device got smaller the image shrunk for some reason and wouldn't cover even though it is stated as background size 100% above so cover just fixes this in our media query with the smaller screens. */
     }
 
@@ -82,7 +82,7 @@
         background-image: linear-gradient(to right, /* This is the degree at which it splits our gradient and our picture or different color */
                                         rgba($color-white, .9) 0%, /* at 0% we want white color */
                                         rgba($color-white, .9) 100%), /* at 100% we want white color */
-                                         url(../../img/nat-10.jpg); /* Linear-gradient with background image */
+                                         url(../img/nat-10.jpg); /* Linear-gradient with background image */
     }
 
         &__form {
