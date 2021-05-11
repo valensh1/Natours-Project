@@ -1,27 +1,32 @@
 # Natours
-A landing page for a fictitious Nature Tours Company
-
+**Landing page for a fictitious Nature Tours Company**
+<br>
+<br>
 
 ## Application Start-up
 
 Clone or download this repo to your local machine, unzip and open index.html file in a browser.
 Alternatively, click [Here to view the finished website on live GitHub page.]( https://valensh1.github.io/Natours-Project/#)
-
+<br>
 
 ## Screenshots of Finished Project
+<br>
 
-![screenshot of finished project](screenshot-hero.png "screenshot of finished project")
+![screenshot of finished project](/img/Project-Screenshot-2.png?raw=true "screenshot of finished project")
+![screenshot of finished project](/img/Project-Screenshot-3.png?raw=true "screenshot of finished project")
+![screenshot of finished project](/img/Project-Screenshot-4.png?raw=true "screenshot of finished project")
+![screenshot of finished project](/img/Project-Screenshot-5.png?raw=true "screenshot of finished project")
+![screenshot of finished project](/img/Project-Screenshot-1.png?raw=true "screenshot of finished project")
 
-![screenshot of finished project](screenshot-booking.png "screenshot of finished project")
-
-![screenshot of finished project](Project-Screenshot-1.png "screenshot of finished project")
-
+<br>
+<br>
 
 ## Technologies Used
 * HTML
 * CSS
 * Sass
-
+<br>
+<br>
 
 ## Knowledge Gained From This Project
 
