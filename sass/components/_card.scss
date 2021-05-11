@@ -60,16 +60,16 @@
         border-top-left-radius: .3rem; // overflow hidden usually fixes this but when we use clip-path sometimes it screws up our border radius and overflow: hidden may not fix so we need to set radius manually like so.
 
     &--1 {
-        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img/nat-5.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../img/nat-5.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
     }
 
     &--2 {
-        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img/nat-6.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../img/nat-6.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
        
     }
 
     &--3 {
-        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img/nat-7.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
+        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../img/nat-7.jpg); // We are blending a picture here with a linear gradient; This path is made coming from the style.css file because that is where the Sass code ultimately goes.
         
     }
   }
