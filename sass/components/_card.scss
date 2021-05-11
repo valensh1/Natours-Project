@@ -54,7 +54,7 @@
     &__picture {
         background-size: cover;
         height: 23rem;
-        background-blend-mode: screen; // Need this property to have the picture blend in with the linear gradient code below in the &--1. If remove this property its only the linear gradient that shows through since that is the first property listed out in the background-image property below. If the picture was listed first then withut this background blend property the picture would be the only one showing and not the linear gradient.
+        background-blend-mode: screen; // Need this property to have the picture blend in with the linear gradient code below in the &--1. If remove this property its only the linear gradient that shows through since that is the first property listed out in the background-image property below. If the picture was listed first then without this background blend property the picture would be the only one showing and not the linear gradient.
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Makes the slant on the picture in the tour card; This ensures it works in all browsers.
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // Makes the slant on the picture in the tour card
         border-top-left-radius: .3rem; // overflow hidden usually fixes this but when we use clip-path sometimes it screws up our border radius and overflow: hidden may not fix so we need to set radius manually like so.
