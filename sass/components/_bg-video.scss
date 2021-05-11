@@ -4,7 +4,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: -1; /* This is so video is behind everything else */
+    z-index: -1; /* This is so that video is behind everything else */
     opacity: .15;
     overflow: hidden; /* This will make any part of video that overflows the container hidden. */
     
